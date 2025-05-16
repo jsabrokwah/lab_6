@@ -52,6 +52,7 @@ delete_duplicate(){
 move_duplicate(){
     local file="$1"
     local target_dir="$2"
+    mkdir -p "$target_dir"  # Create target directory if it doesn't exist
     echo "Moving duplicate file: $file to $target_dir"
     mv "$file" "$target_dir"
     write_log "Moved duplicate file: $file to $target_dir"
