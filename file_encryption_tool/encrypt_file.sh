@@ -28,10 +28,10 @@ fi
 
 # Configure logging
 log_file="file_encryption.log"
-exec 3>&1 1>>${log_file} 2>&1
+exec 2>>${log_file} 2>&1
 write_log() {
     local message="$1"
-    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message" >&3
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message" 
 }
 # Function to encrypt a file
 encrypt_file() {
