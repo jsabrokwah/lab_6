@@ -4,21 +4,9 @@
 # It uses file size and content comparison to spot duplicates and offer choices to delete or move them.
 # It make use of File comparison, hashing, arrays, user interaction
 
-# Handle errors
-set -euo pipeline
-
-# Configure logging
-log_file="duplicate_finder.log"
-exec 3>&1 1>>${log_file} 2>&1
-
-
-write_log() {
-    local message="$1"
-    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message" >&3
-}
 
 # Check if the directory path is provided
-if [ -z "$1" ]; then
+if [ $# -eq 0 ]; then
     echo "Usage: $0 <directory_path>"
     exit 1
 fi
@@ -35,6 +23,20 @@ if [ -z "$(ls -A "$1")" ]; then
     write_log "Directory $1 is empty."
     exit 0
 fi
+
+# Handle errors
+set -euo pipefail
+
+# Configure logging
+log_file="duplicate_finder.log"
+exec  2>>${log_file} 2>&1
+
+
+write_log() {
+    local message="$1"
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message" 
+}
+
 # Set the directory to be scanned
 DIRECTORY="$1"
 
@@ -59,7 +61,7 @@ move_duplicate(){
 # Function to find duplicate files
 find_duplicates(){
     local dir="$1"
-    local -A file_hashes
+    declare -A file_hashes    # Declare associative array
     local duplicates=()
 
     # Loop through files in the directory
@@ -68,7 +70,7 @@ find_duplicates(){
             # Calculate the hash of the file
             local hash=$(md5sum "$file" | cut -d ' ' -f 1)
             # Check if the hash already exists
-            if [[ -n "${file_hashes[$hash]}" ]]; then
+            if [[ -n "${file_hashes[$hash]:-}" ]]; then    # Add default empty value
                 duplicates+=("$file")
                 duplicates+=("${file_hashes[$hash]}")
             else
