@@ -1,16 +1,11 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # This script is a tool to show which folders and files use the most space.
 # It creates a tree-like structure to display disk usage and offer options to sort and filter results.
 # It makes use of Recursion, data sorting, output formatting, data visualization
-# and error handling.
+
 
 set -euo pipefail
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-# ------------------------#
-#      HELP & USAGE      #
-# ------------------------#
 
 # Print help message
 if [[ "${1:-}" == "--help" ]]; then
@@ -24,9 +19,6 @@ if [ "$#" -lt 1 ]; then
     exit 1
 fi
 
-# -----------------------------#
-#   INITIAL DIRECTORY CHECKS   #
-# -----------------------------#
 
 DIR="$1"
 
@@ -42,9 +34,6 @@ if [ ! -r "$DIR" ]; then
     exit 1
 fi
 
-# -----------------------------#
-#   PARSE OPTIONAL ARGUMENTS   #
-# -----------------------------#
 
 SORT="desc"         # Default sort order
 MIN_SIZE=0          # Minimum file size to display
@@ -62,9 +51,7 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-# ------------------------#
-#       LOGGING SETUP     #
-# ------------------------#
+# configure logging
 
 log_file="disk_analyzer.log"
 
@@ -77,9 +64,6 @@ write_log() {
 # Redirect only errors
 exec 2>>"$log_file"
 
-# ------------------------#
-#   SIZE FORMATTER FUNC   #
-# ------------------------#
 
 # Convert size in bytes to human-readable format
 human_readable() {
@@ -95,9 +79,6 @@ human_readable() {
     fi
 }
 
-# ------------------------#
-#     SORT FUNCTION       #
-# ------------------------#
 
 # Sorts an array of entries (SIZE|PATH) in-place using bubble sort
 sort_entries() {
@@ -118,9 +99,6 @@ sort_entries() {
     done
 }
 
-# ------------------------#
-#   DISK USAGE RECURSION  #
-# ------------------------#
 
 # Recursively traverse a directory and print size tree
 disk_usage() {
@@ -161,9 +139,7 @@ disk_usage() {
     done
 }
 
-# ------------------------#
-#        MAIN EXEC        #
-# ------------------------#
+# Script execution starts here
 
 write_log "Starting disk usage analysis for: $DIR"
 echo "Disk Usage Tree for: $DIR"
