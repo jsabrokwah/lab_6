@@ -1,0 +1,19 @@
+Full backup of test_documents/Database and bash challenge lab.pdf completed in full_backup_20250516_114946
+Full backup of test_documents/Database and bash challenge lab.pdf completed in full_backup_20250516_115552
+sending incremental file list
+joseph-abrokwah-21de296e-5410-480e-ba0c-1b458f1bceab-certificate.pdf
+
+sent 474,809 bytes  received 35 bytes  949,688.00 bytes/sec
+total size is 474,530  speedup is 1.00
+Partial backup of test_documents/joseph-abrokwah-21de296e-5410-480e-ba0c-1b458f1bceab-certificate.pdf completed in partial_backup_20250516_120222
+sending incremental file list
+President Donald Trump on new Syrian president _ Raw video.mp4
+
+sent 1,763,346 bytes  received 35 bytes  3,526,762.00 bytes/sec
+total size is 1,762,761  speedup is 1.00
+Partial backup of test_documents/President Donald Trump on new Syrian president _ Raw video.mp4 completed in partial_backup_20250516_120452
+Compression of test_documents/President Donald Trump on new Syrian president _ Raw video.mp4 completed in compress_backup_20250516_120600
+You need to provide the time, frequency, and mode for scheduling.
+ NB: This script will automatically run at the specified time, frequency, and mode.
+
+Enter the time (HH:MM) for scheduling backup: 

@@ -22,24 +22,24 @@ if [ ! -r "$2" ]; then
 fi
 
 # Handle errors
-set -euo pipeline
+set -euo pipefail
 
 # Configure logging
-log_file="duplicate_finder.log"
-exec 3>&1 1>>${log_file} 2>&1
+log_file="backup_file.log"
+exec 2>>${log_file} 2>&1
 
 
 write_log() {
     local message="$1"
-    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message" >&3
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message"
 }
 
 # Function to perform a full backup
 full_backup() {
     local file="$1"
     local backup_dir="full_backup_$(date +%Y%m%d_%H%M%S)"
-    mkdir -p "/home/$USER/$backup_dir"
-    cp "$file" "/home/$USER/$backup_dir/"
+    mkdir -p "$backup_dir"
+    cp "$file" "$backup_dir/"
     echo "Full backup of $file completed in $backup_dir"
     write_log "Full backup of $file completed in $backup_dir"
 }
@@ -48,8 +48,8 @@ full_backup() {
 partial_backup() {
     local file="$1"
     local backup_dir="partial_backup_$(date +%Y%m%d_%H%M%S)"
-    mkdir -p "/home/$USER/$backup_dir"
-    rsync -av --update "$file" "/home/$USER/$backup_dir/"
+    mkdir -p "$backup_dir"
+    rsync -av --update "$file" "$backup_dir/"
     echo "Partial backup of $file completed in $backup_dir"
     write_log "Partial backup of $file completed in $backup_dir"
 }
@@ -58,8 +58,8 @@ partial_backup() {
 compress_backup() {
     local file="$1"
     local backup_dir="compress_backup_$(date +%Y%m%d_%H%M%S)"
-    mkdir -p "/home/$USER/$backup_dir"
-    tar -czf "/home/$USER/$backup_dir/backup.tar.gz" "$file"
+    mkdir -p "$backup_dir"
+    tar -czf "$backup_dir/backup.tar.gz" "$file"
     echo "Compression of $file completed in $backup_dir"
     write_log "Compression of $file completed in $backup_dir"
 }
