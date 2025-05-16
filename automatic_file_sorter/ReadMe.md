@@ -26,6 +26,11 @@ A Bash script that automatically organizes files into categorized directories ba
 ./file_sorter.sh ~/Downloads
 ```
 
+## Testing
+- All test documents are in the test_documents directory
+- Screenshots of test results are in the test_results directory
+
+
 ## Requirements
 
 - Bash shell

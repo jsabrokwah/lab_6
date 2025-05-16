@@ -15,6 +15,11 @@ A utility to identify and manage duplicate files using MD5 hash comparison.
 ```bash
 duplicate_finder.sh <directory>
 ```
+## Testing
+
+- All test documents are in the test_documents directory
+- Screenshots of test results are in the test_results directory
+
 
 The script will:
 1. Scan the specified directory for duplicate files

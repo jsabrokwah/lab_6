@@ -30,6 +30,11 @@ Options:
 ./encrypt_file.sh --decrypt "your_password" sensitive_data.txt.enc
 ```
 
+## Testing
+- All test documents are in the test_documents directory
+- Screenshots of test results are in the test_results directory
+
+
 ## Security Notes
 
 - Uses OpenSSL's AES-256-CBC encryption

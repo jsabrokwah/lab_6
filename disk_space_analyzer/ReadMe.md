@@ -22,6 +22,11 @@ Options:
   --help                   Show help message
 ```
 
+## Testing
+
+- Screenshots of test results are in the test_results directory
+
+
 ## Examples
 
 ```bash

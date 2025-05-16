@@ -25,6 +25,10 @@ Options:
   -h, --help             Show help message
 ```
 
+## Testing
+- All test documents are in the test_documents directory
+- Screenshots of test results are in the test_results directory
+
 ## Requirements
 
 - Bash shell

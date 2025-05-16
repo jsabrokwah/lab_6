@@ -42,6 +42,11 @@ Options:
 # - Backup mode (full|partial|compress)
 ```
 
+## Testing
+- All test documents are in the test_documents directory
+- Screenshots of test results are in the test_results directory
+
+
 ## Backup Details
 
 - Full backups create a new directory named `full_backup_YYYYMMDD_HHMMSS`

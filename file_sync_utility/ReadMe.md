@@ -22,6 +22,11 @@ sync_file.sh <source_dir> <target_dir>
 # Basic directory sync
 ./sync_file.sh ~/Projects ~/Backup/Projects
 ```
+## Testing
+- All test documents are in the source_dir directory
+- The synch copy is in the destination_dir directory
+- Screenshots of test results are in the test_results directory
+
 
 ## Conflict Resolution
 
